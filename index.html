@@ -1,3 +1,4 @@
+TEBRİZ KANAL 65:
 <!DOCTYPE html>
 <html lang="az">
 <head>
@@ -175,3 +176,19 @@
     document.getElementById("playerjs-container").style.display = "none";
     document.getElementById("offline-logo").style.display = "block";
   });
+
+player.on("play", function () {
+    document.getElementById("playerjs-container").style.display = "block";
+    document.getElementById("offline-logo").style.display = "none";
+  });
+</script>
+
+<script>
+  setInterval(() => {
+    const now = new Date();
+    document.getElementById("clock").innerText = now.toLocaleString("az-AZ");
+  }, 1000);
+</script>
+
+</body>
+</html>
