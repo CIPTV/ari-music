@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ARI MUSIC - Canlı Yayım</title>
+  <meta name="description" content="ARI MUSIC - Sənin canlı musiqi yayımın." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #121212;
+      color: #f1f1f1;
+      text-align: center;
+      padding: 20px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 10px;
+    }
+
+    header img {
+      height: 60px;
+      border-radius: 12px;
+    }
+
+    h1 {
+      color: #00ffd5;
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    #monthly-warning {
+      background: #ff0033;
+      color: white;
+      padding: 10px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      box-shadow: 0 0 8px #ff0033;
+    }
+
+    #top-ad {
+      background: #00ffd5;
+      color: #121212;
+      font-weight: bold;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      font-size: 16px;
+      box-shadow: 0 0 8px #00ffd5;
+      white-space: normal;
+      line-height: 1.4;
+    }
+
+    #playerjs-container {
+      width: 90%;
+      max-width: 900px;
+      height: 510px;
+      margin: 0 auto;
+      border-radius: 15px;
+      overflow: hidden;
+      background: black;
+    }
+
+    #offline-logo {
+      display: none;
+      margin-top: 20px;
+    }
+
+    #offline-logo img {
+      max-width: 100%;
+      border-radius: 15px;
+    }
+
+    #viewer-count {
+      margin-top: 10px;
+      font-size: 16px;
+      color: #00ffd5;
+    }
+
+    #clock {
+      margin-top: 5px;
+      font-size: 16px;
+      color: #ccc;
+    }
+
+    #scrolling-ad {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: #00ffd5;
+      color: #121212;
+      font-weight: bold;
+      padding: 10px 0;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 14px;
+      z-index: 9999;
+    }
+
+    #scrolling-ad span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-left 20s linear infinite;
+    }
+
+    @keyframes scroll-left {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    .contact-buttons {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      z-index: 10000;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-buttons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background-color: #00ffd5;
+      color: #121212;
+      border-radius: 50%;
+      text-decoration: none;
+      font-size: 22px;
+      box-shadow: 0 0 8px #00ffd5;
+      transition: background 0.3s;
+    }
+
+    .contact-buttons a:hover {
+      background-color: #00e0b8;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <img src="https://via.placeholder.com/80x60.png?text=LOGO" alt="ARI MUSIC Logo" />
+  <h1>ARI MUSIC</h1>
+</header>
+
+<div id="monthly-warning">
+  ⚠️ Diqqət! TV ödənişli sistemə keçəcək.
+</div>
+
+<div id="top-ad">
+  🎶 Musiqi yayımı – 24/7 canlı səs!<br>
+  🔊 Sevdiyiniz ritmlər dayanmadan səninlə!<br>
+  🎧 HD keyfiyyətdə musiqilər, istədiyin zaman!<br>
+  💸 Aylıq cəmi 5 AZN | İllik 25 AZN – Ucuz və keyfiyyətli!
+</div>
+
+<div id="playerjs-container"></div>
+
+<div id="offline-logo">
+  <img src="https://via.placeholder.com/800x450.png?text=Yay%C4%B1m+Haz%C4%B1r+Deyil" alt="Yayım Hazır Deyil" />
+</div>
+
+<div id="viewer-count">🔴 Hal-hazırda izləyicilər: <span id="count">127</span></div>
+<p id="clock"></p>
+
+<div id="scrolling-ad">
+  <span>EKANOM İPTV 1500 KANAL 12 AY CƏMİ 25AZN | VİP PREMİUM İPTV 13000 KANAL + 20000 FİLM CƏMİ 60AZN. TEST 12 SAAT 📞 Əlaqə: 055-483-45-94 | Telegram: @ByKerimof</span>
+</div>
+
+<div class="contact-buttons">
+  <a href="https://wa.me/994554834594" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://t.me/ByKerimof" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+</div>
+
+<script src="https://tas-ix.media/player/xta/playerjs.js"></script>
+<script>
+  var player = new Playerjs({
+    id: "playerjs-container",
+    file: "https://ip38.avrupatelekom.com:3995/stream/play.m3u8",
+    autoplay: 1,
+    mute: true,
+    live: true
+  });
+
+  player.on("error", function () {
+    document.getElementById("playerjs-container").style.display = "none";
+    document.getElementById("offline-logo").style.display = "block";
+  });
+
+  player.on("play", function () {
+    document.getElementById("playerjs-container").style.display = "block";
+    document.getElementById("offline-logo").style.display = "none";
+  });
+</script>
+
+<script>
+  setInterval(() => {
+    const now = new Date();
+    document.getElementById("clock").innerText = now.toLocaleString("az-AZ");
+  }, 1000);
+
+  let viewers = 127;
+  setInterval(() => {
+    const change = Math.floor(Math.random() * 3) - 1;
+    viewers = Math.max(100, viewers + change);
+    document.getElementById("count").innerText = viewers;
+  }, 5000);
+</script>
+
+</body>
+</html>
