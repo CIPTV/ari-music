@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SPECTRE IPTV - Canlı Yayım</title>
   <meta name="description" content="SPECTRE IPTV - 7/24 Canlı Yayım!" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://vjs.zencdn.net/7.20.3/video-js.css" rel="stylesheet" />
 
   <style>
     body {
@@ -59,35 +59,22 @@
       line-height: 1.4;
     }
 
-    #playerjs-container {
-      width: 90%;
+    .video-js {
+      width: 90% !important;
       max-width: 900px;
-      height: 510px;
-      margin: 0 auto;
+      height: 510px !important;
+      margin: 0 auto 20px;
       border-radius: 15px;
-      overflow: hidden;
       background: black;
     }
 
-    #offline-logo {
-      display: none;
-      margin-top: 20px;
-    }
-
-    #offline-logo img {
-      max-width: 100%;
-      border-radius: 15px;
-    }
-
-    #viewer-count {
-      margin-top: 10px;
-      font-size: 16px;
-      color: #00ffd5;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-      flex-direction: column;
+    #viewer-widget-container {
+      width: 320px;
+      height: 150px;
+      margin: 10px auto 20px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 8px #00ffd5;
     }
 
     #clock {
@@ -139,48 +126,37 @@
   ⏱️ TEST İMKANI – 12 SAAT TAM ÖDƏNİŞSİZ!
 </div>
 
-<div id="playerjs-container"></div>
+<video
+  id="my-video"
+  class="video-js vjs-default-skin"
+  controls
+  preload="auto"
+  autoplay
+  muted
+  liveui
+  data-setup='{}'
+>
+  <source src="https://ip38.avrupatelekom.com:3995/stream/play.m3u8" type="application/x-mpegURL" />
+  Sizin brauzer video formatını dəstəkləmir.
+</video>
 
-<div id="offline-logo">
-  <img src="https://via.placeholder.com/800x450.png?text=Yay%C4%B1m+Haz%C4%B1r+Deyil" alt="Yayım Hazır Deyil" />
-</div>
-
-<div id="viewer-count">
-  🔴 Hal-hazırda izləyicilər: 
+<div id="viewer-widget-container">
   <iframe 
     src="https://ip38.avrupatelekom.com/viewer-widget/arimusiclive" 
+    width="100%" 
+    height="100%" 
     frameborder="0" 
-    width="100" 
-    height="30" 
-    style="background-color: transparent; color: #00ffd5;">
+    allowfullscreen>
   </iframe>
 </div>
+
 <p id="clock"></p>
 
 <div id="scrolling-ad">
   <span>🎉 EKANOM İPTV – 1500 KANAL – 12 AY CƏMİ 25AZN | 💎 VİP PREMİUM – 13000 KANAL + 20000 FİLM – CƏMİ 60AZN | ⏱️ 12 SAAT TEST İMKANI – ƏLAQƏ: Telegram @arimusiciptv</span>
 </div>
 
-<script src="https://tas-ix.media/player/xta/playerjs.js"></script>
-<script>
-  var player = new Playerjs({
-    id: "playerjs-container",
-    file: "https://ip38.avrupatelekom.com:3995/stream/play.m3u8",
-    autoplay: 1,
-    mute: true,
-    live: true
-  });
-
-  player.on("error", function () {
-    document.getElementById("playerjs-container").style.display = "none";
-    document.getElementById("offline-logo").style.display = "block";
-  });
-
-player.on("play", function () {
-    document.getElementById("playerjs-container").style.display = "block";
-    document.getElementById("offline-logo").style.display = "none";
-  });
-</script>
+<script src="https://vjs.zencdn.net/7.20.3/video.min.js"></script>
 
 <script>
   setInterval(() => {
