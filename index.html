@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ARI MUSIC - Canlı Yayım</title>
-  <meta name="description" content="ARI MUSIC - Sənin canlı musiqi yayımın." />
+  <title>SPECTRE IPTV - Canlı Yayım</title>
+  <meta name="description" content="SPECTRE IPTV - 7/24 Canlı Yayım!" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 
   <style>
@@ -83,6 +83,11 @@
       margin-top: 10px;
       font-size: 16px;
       color: #00ffd5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-direction: column;
     }
 
     #clock {
@@ -115,42 +120,13 @@
       0% { transform: translateX(0%); }
       100% { transform: translateX(-100%); }
     }
-
-    .contact-buttons {
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      z-index: 10000;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .contact-buttons a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 50px;
-      height: 50px;
-      background-color: #00ffd5;
-      color: #121212;
-      border-radius: 50%;
-      text-decoration: none;
-      font-size: 22px;
-      box-shadow: 0 0 8px #00ffd5;
-      transition: background 0.3s;
-    }
-
-    .contact-buttons a:hover {
-      background-color: #00e0b8;
-    }
   </style>
 </head>
 <body>
 
 <header>
-  <img src="https://via.placeholder.com/80x60.png?text=LOGO" alt="ARI MUSIC Logo" />
-  <h1>ARI MUSIC</h1>
+  <img src="https://via.placeholder.com/80x60.png?text=LOGO" alt="Spectre IPTV Logo" />
+  <h1>SPECTRE IPTV</h1>
 </header>
 
 <div id="monthly-warning">
@@ -158,10 +134,9 @@
 </div>
 
 <div id="top-ad">
-  🎶 Musiqi yayımı – 24/7 canlı səs!<br>
-  🔊 Sevdiyiniz ritmlər dayanmadan səninlə!<br>
-  🎧 HD keyfiyyətdə musiqilər, istədiyin zaman!<br>
-  💸 Aylıq cəmi 5 AZN | İllik 25 AZN – Ucuz və keyfiyyətli!
+  🎉 EKANOM İPTV – 1500 KANAL – 12 AY CƏMİ 25 AZN!<br>
+  💎 VİP PREMİUM İPTV – 13000 KANAL + 20000 FİLM – CƏMİ 60 AZN!<br>
+  ⏱️ TEST İMKANI – 12 SAAT TAM ÖDƏNİŞSİZ!
 </div>
 
 <div id="playerjs-container"></div>
@@ -170,16 +145,20 @@
   <img src="https://via.placeholder.com/800x450.png?text=Yay%C4%B1m+Haz%C4%B1r+Deyil" alt="Yayım Hazır Deyil" />
 </div>
 
-<div id="viewer-count">🔴 Hal-hazırda izləyicilər: <span id="count">127</span></div>
+<div id="viewer-count">
+  🔴 Hal-hazırda izləyicilər: 
+  <iframe 
+    src="https://ip38.avrupatelekom.com/viewer-widget/arimusiclive" 
+    frameborder="0" 
+    width="100" 
+    height="30" 
+    style="background-color: transparent; color: #00ffd5;">
+  </iframe>
+</div>
 <p id="clock"></p>
 
 <div id="scrolling-ad">
-  <span>EKANOM İPTV 1500 KANAL 12 AY CƏMİ 25AZN | VİP PREMİUM İPTV 13000 KANAL + 20000 FİLM CƏMİ 60AZN. TEST 12 SAAT 📞 Əlaqə: 055-483-45-94 | Telegram: @ByKerimof</span>
-</div>
-
-<div class="contact-buttons">
-  <a href="https://wa.me/994554834594" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-  <a href="https://t.me/ByKerimof" target="_blank" title="Telegram"><i class="fab fa-telegram"></i></a>
+  <span>🎉 EKANOM İPTV – 1500 KANAL – 12 AY CƏMİ 25AZN | 💎 VİP PREMİUM – 13000 KANAL + 20000 FİLM – CƏMİ 60AZN | ⏱️ 12 SAAT TEST İMKANI – ƏLAQƏ: Telegram @arimusiciptv</span>
 </div>
 
 <script src="https://tas-ix.media/player/xta/playerjs.js"></script>
@@ -196,26 +175,3 @@
     document.getElementById("playerjs-container").style.display = "none";
     document.getElementById("offline-logo").style.display = "block";
   });
-
-  player.on("play", function () {
-    document.getElementById("playerjs-container").style.display = "block";
-    document.getElementById("offline-logo").style.display = "none";
-  });
-</script>
-
-<script>
-  setInterval(() => {
-    const now = new Date();
-    document.getElementById("clock").innerText = now.toLocaleString("az-AZ");
-  }, 1000);
-
-  let viewers = 127;
-  setInterval(() => {
-    const change = Math.floor(Math.random() * 3) - 1;
-    viewers = Math.max(100, viewers + change);
-    document.getElementById("count").innerText = viewers;
-  }, 5000);
-</script>
-
-</body>
-</html>
